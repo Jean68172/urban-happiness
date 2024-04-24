@@ -1,0 +1,54 @@
+{
+  "name": "github-api-signature",
+  "version": "2.0.1",
+  "description": "Node.js signature generator for GitHub API using a PGP key",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GitbookIO/github-api-signature.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GitbookIO/github-api-signature/issues"
+  },
+  "author": "jpreynat <johan.preynat@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "openpgp": "5.0.0-3",
+    "pad": "3.2.0"
+  },
+  "devDependencies": {
+    "ava": "3.13.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-gitbook": "^1.0.1",
+    "typescript": "^3.4.3"
+  },
+  "scripts": {
+    "build": "rm -rf lib/ && tsc --build tsconfig.json",
+    "prepublishOnly": "yarn run test && yarn run build",
+    "test": "yarn run test:ava && yarn run test:lint && yarn run test:types",
+    "test:lint": "tslint src/**/*.ts",
+    "test:types": "tsc",
+    "test:ava": "ava --verbose"
+  },
+  "ava": {
+    "files": [
+      "src/**/tests/*"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "failFast": true,
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "keywords": [
+    "node",
+    "github",
+    "api",
+    "pgp",
+    "gpg"
+  ]
+}
